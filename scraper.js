@@ -1,5 +1,6 @@
 var request = require('request');
 var cheerio = require('cheerio');
+var colors = require('colors')
 
 request({
   uri: "https://en.wikipedia.org/wiki/Angel_Dust_(Faith_No_More_album)",
@@ -9,10 +10,9 @@ request({
   var item = $('.wikitable.infobox').find('th').html();
   var firstHeader = $('.firstHeading').text();
   var title = $('.wikitable.infobox').find('td > a');
-  console.log(firstHeader)
-  console.log('_______________________________')
+  console.log(colors.red.underline(firstHeader))
   $(title).each(function(){
-  	console.log($(this).attr('title') + ' -------> ' + $(this).parent().next().find('span').attr('title'))
+  	console.log(colors.green($(this).attr('title')) + ' -------> ' + $(this).parent().next().find('span').attr('title'))
 
   })
 });
