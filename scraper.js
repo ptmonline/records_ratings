@@ -15,7 +15,7 @@ var albumTitle,
       {
         name: 'title', 
         validator: /^[a-zA-Z\s\-]+$/,
-        warning: 'Username must be only letters, spaces, or dashes'
+        warning: 'Title must be only letters, spaces, or dashes'
       },
       {
         name: 'artist',
@@ -27,11 +27,27 @@ var albumTitle,
   prompt.start();
  
   prompt.get(properties, function (err, result) {
-    titleAlbum = result.title.replace(/ /g , "_");
-    // titleAlbum = result.title.split(' ').toUppercase();
-    titleArtist = result.artist.replace(/ /g , "_");
-    // console.log(titleAlbum);
-    // console.log(titleAlbum.join('@'))
+    console.log(result.title.split(' ').length)
+    var thealbumarray = [];
+    var theartistarray = []
+    for (var x = 0; x < result.title.split(' ').length; x++){
+      if(result.title.split(' ')[x] == 'and' || result.title.split(' ')[x] == 'of' || result.title.split(' ')[x] == 'to'){
+        thealbumarray.push(result.title.split(' ')[x].toLowerCase());
+      }else{
+        thealbumarray.push(result.title.split(' ')[x][0].toUpperCase() + result.title.split(' ')[x].slice(1).toLowerCase());
+      }
+    }
+    for (var y = 0; y < result.artist.split(' ').length; y++){
+      theartistarray.push(result.artist.split(' ')[y][0].toUpperCase() + result.artist.split(' ')[y].slice(1).toLowerCase());
+    }
+    
+
+    console.log(thealbumarray);
+    console.log(theartistarray);
+    titleAlbum = thealbumarray.toString().replace(/,/g , "_");
+    titleArtist = theartistarray.toString().replace(/,/g, "_");
+    console.log(titleAlbum);
+    console.log(titleArtist)
     searchItems(titleAlbum,titleArtist)
   });
 
