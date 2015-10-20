@@ -87,6 +87,16 @@ function searchItems(finishString){
         }
 
       })
+      $(ititle).each(function(){
+        var punctuation = $(this).parent().parent().next().find('span').attr('title')
+        var wordPunctuation = $(this).parent().parent().next().text();
+        if(punctuation){
+         console.log(colors.green($(this).attr('title')) + ' -------> ' + punctuation)
+        }else{
+          console.log(colors.green($(this).attr('title')) + ' -------> ' + wordPunctuation)
+        }
+
+      })
     }
   });
 
