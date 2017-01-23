@@ -1,7 +1,7 @@
 {
   "name": "records_ratings",
   "version": "1.0.0",
-  "description": "records rating from wikipedia",
+  "description": "records rating from wikipedia (beta)",
   "main": "scraper.js",
   "dependencies": {
     "cheerio": "^0.19.0",
