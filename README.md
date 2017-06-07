@@ -1,4 +1,4 @@
 # records_ratings
-Scrape professional ratings from wikipedia for records.
+Scrape record ratings from wikipedia from console.
 
 *Beta version*
